@@ -1,0 +1,6 @@
+EXCLUDE_QUERY_DIR
+B /home/shashank/.opam/ocaml-base-compiler.4.05.0/lib/ocaml
+B ../../../../../_build/default/ipc/ipfs_dag/ssd_irmin-master/src/comm/.comm.eobjs/byte
+S /home/shashank/.opam/ocaml-base-compiler.4.05.0/lib/ocaml
+S .
+FLG -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs
