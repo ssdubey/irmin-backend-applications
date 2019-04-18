@@ -1,0 +1,3 @@
+(executable
+ (name git_bckend)
+ (libraries lwt.unix irmin irmin-unix ))

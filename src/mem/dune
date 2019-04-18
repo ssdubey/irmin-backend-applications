@@ -1,0 +1,3 @@
+(executable
+ (name mem)
+ (libraries irmin-mem irmin-unix))
