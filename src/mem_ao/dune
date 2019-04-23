@@ -1,0 +1,6 @@
+(executable
+ (name mem_ao)
+ (libraries digestif.ocaml irmin-mem lwt.unix))
+ (env
+ (dev
+  (flags (:standard -warn-error -A))))
