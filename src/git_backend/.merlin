@@ -57,7 +57,7 @@ B /home/shashank/.opam/system/lib/webmachine
 B /home/shashank/.opam/system/lib/zarith
 B /usr/lib/ocaml
 B /usr/lib/ocaml/threads
-B ../../../_build/default/irmin-ipfs/src/git/.git_bckend.eobjs
+B ../../../_build/default/irmin-ipfs/src/git_backend/.git_bckend.eobjs
 S /home/shashank/.opam/system/lib/astring
 S /home/shashank/.opam/system/lib/base
 S /home/shashank/.opam/system/lib/base/caml

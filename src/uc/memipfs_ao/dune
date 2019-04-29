@@ -1,0 +1,6 @@
+(executable
+ (name memipfs_ao)
+ (libraries digestif.ocaml irmin-memipfs lwt.unix))
+ (env
+ (dev
+  (flags (:standard -warn-error -A))))
