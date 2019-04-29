@@ -16,6 +16,11 @@
 
  open Lwt.Infix
 
+ module Conf = struct
+  let ipfs_path =
+    Irmin.Private.Conf.key ~doc:"path of the ipfs in the local system" 
+    "ipfs_path" Irmin.Private.Conf.string ""
+  end
 
  let src = Logs.Src.create "irmin.mem" ~doc:"Irmin in-memory store"
  
@@ -32,11 +37,19 @@
  
    type value = V.t
  
-   type 'a t = { mutable t : value KMap.t }
+   type 'a t = { mutable t : value KMap.t ;
+                 path_name : string; }
  
-   let map = { t = KMap.empty }
- 
-   let v _config = Lwt.return map
+  (* let map = { t = KMap.empty ;
+               path_name = ""; }
+               let config = C.add config Conf.ipfs_path ipfs_path in*)
+
+   let v _config = (*Lwt.return map*)
+    let path = Irmin.Private.Conf.get _config Conf.ipfs_path in
+      let map = { t = KMap.empty ;
+                  path_name = path; } in
+        Lwt.return map
+
  
    let cast t = (t :> [ `Read | `Write ] t)
  
@@ -67,9 +80,9 @@
       | Some i -> i
       in*)
     (* ignore @@ Sys.command "/usr/local/bin/ipfs dag put --input-enc raw /home/shashank/temp/file";*)
-    
+    let ipfs_path = t.path_name in
      let _ = OS.Cmd.in_string "awertyui"
-             |> OS.Cmd.run_io Cmd.(v "/usr/local/bin/ipfs" % "dag" % "put" % "--input-enc" % "raw") 
+             |> OS.Cmd.run_io Cmd.(v ipfs_path % "dag" % "put" % "--input-enc" % "raw") 
              |> OS.Cmd.to_stdout in
              
      Lwt.return ()
@@ -140,11 +153,7 @@
  end
  
  (*let config () = Irmin.Private.Conf.empty*)
-module Conf = struct
-  let ipfs_path =
-    Irmin.Private.Conf.key ~doc:"path of the ipfs in the local system" 
-    "ipfs_path" Irmin.Private.Conf.string ""
-  end
+
 
  let config ?(config = Irmin.Private.Conf.empty) ipfs_path = 
    let module C = Irmin.Private.Conf in

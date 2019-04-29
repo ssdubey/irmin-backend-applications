@@ -9,7 +9,7 @@ point out which ipfs instance we are using in which operation.*)
 
 let config1 = Irmin_memipfs.config "/usr/local/bin/ipfs";;
 let hashtable = Lwt_main.run @@ Store_module.v config1;;
-print_string "application program";
+print_string "application program"; 
 Store_module.batch hashtable (fun hashtable -> Store_module.add hashtable "key" "123");;
 
 (*print_string "\nthe value is stored in the mem\n";;*)
