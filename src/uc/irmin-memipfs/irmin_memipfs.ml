@@ -40,11 +40,7 @@
    type 'a t = { mutable t : value KMap.t ;
                  path_name : string; }
  
-  (* let map = { t = KMap.empty ;
-               path_name = ""; }
-               let config = C.add config Conf.ipfs_path ipfs_path in*)
-
-   let v _config = (*Lwt.return map*)
+   let v _config = 
     let path = Irmin.Private.Conf.get _config Conf.ipfs_path in
       let map = { t = KMap.empty ;
                   path_name = path; } in
@@ -58,7 +54,8 @@
    let pp_key = Irmin.Type.pp K.t
  
    let find { t; _ } key =
-     ignore @@ Sys.command "/usr/local/bin/ipfs dag get";
+    ignore @@ Sys.command "/usr/local/bin/ipfs dag get";
+    
      Lwt.return_none
  
    let mem { t; _ } key =
@@ -66,22 +63,14 @@
      Lwt.return (KMap.mem key t)
  end
  
- (*let func t key value kMap= 
-  t.t <- kMap.add key value t.t;*)
- 
  module Append_only (K : Irmin.Type.S) (V : Irmin.Type.S) = struct
    include Read_only (K) (V)
    open Bos_setup
    let add t key value =
-  (*)  t.t <- KMap.add key value t.t;
-    let item = Some (KMap.find key t) in
-      let item = match item with 
-      | None -> ""
-      | Some i -> i
-      in*)
-    (* ignore @@ Sys.command "/usr/local/bin/ipfs dag put --input-enc raw /home/shashank/temp/file";*)
+   
+    let str = Irmin.Type.to_string V.t value in
     let ipfs_path = t.path_name in
-     let _ = OS.Cmd.in_string "awertyui"
+    let _ = OS.Cmd.in_string str
              |> OS.Cmd.run_io Cmd.(v ipfs_path % "dag" % "put" % "--input-enc" % "raw") 
              |> OS.Cmd.to_stdout in
              
