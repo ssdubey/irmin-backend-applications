@@ -1,0 +1,4 @@
+(library
+ (name        irmin_memipfs)
+ (public_name irmin-memipfs)
+ (libraries   irmin bos.setup))

@@ -26,7 +26,7 @@ B /home/shashank/.opam/switch2/lib/stringext
 B /home/shashank/.opam/switch2/lib/uchar
 B /home/shashank/.opam/switch2/lib/uri
 B /home/shashank/.opam/switch2/lib/uutf
-B ../../../_build/default/irmin-ipfs/src/memipfs_ao/.memipfs_ao.eobjs/byte
+B ../../../_build/default/irmin-ipfs/src/memipfs_ao/.ipfs_application.eobjs/byte
 S /home/shashank/.opam/switch2/lib/astring
 S /home/shashank/.opam/switch2/lib/base64
 S /home/shashank/.opam/switch2/lib/bos

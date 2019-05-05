@@ -1,5 +1,5 @@
 (executable
- (name memipfs_ao)
+ (name ipfs_application)
  (libraries digestif.ocaml irmin-memipfs lwt.unix))
  (env
  (dev
