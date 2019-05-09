@@ -1,0 +1,6 @@
+(executable
+ (name ipfs_application)
+ (libraries digestif.ocaml irmin bos.setup lwt.unix))
+ (env
+ (dev
+  (flags (:standard -warn-error -A))))
